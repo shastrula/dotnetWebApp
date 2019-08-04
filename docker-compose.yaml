@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  webapp:
+    image: dotnet-webapp:latest
+    build:
+      context: .
+    ports:
+     - 9090:5000
+
+      

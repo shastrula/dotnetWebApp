@@ -13,6 +13,7 @@ RUN dotnet publish -c Release -o /app
 FROM microsoft/dotnet:2.2-aspnetcore-runtime
 WORKDIR /app
 COPY --from=publish /app .
-ENTRYPOINT ["dotnet", "myWebApp.dll", "--server.urls", "http://*:80"]
+# ENTRYPOINT ["dotnet", "myWebApp.dll", "--server.urls", "http://*:80"]
+ENTRYPOINT ["dotnet", "myWebApp.dll"]
 
-EXPOSE 80
+EXPOSE 5000
