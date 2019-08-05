@@ -1,12 +1,11 @@
 # STAGE01 - Build application and its dependencies
-FROM microsoft/dotnet:2.2-sdk AS build-env
+FROM microsoft/dotnet:2.2-sdk
 WORKDIR /app
 
-RUN dotnet new webApp -o myWebApp --no-https
-WORKDIR /app/myWebApp
+COPY entrypoint.sh /app
 
+RUN chmod +x /app/*.sh
 
-ENTRYPOINT [ "dotnet", "watch", "run", "--no-restore", "--urls", "http://0.0.0.0:5000"]
-
+ENTRYPOINT [ "/app/entrypoint.sh"]
 
 EXPOSE 5000
